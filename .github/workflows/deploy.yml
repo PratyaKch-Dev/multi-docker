@@ -21,6 +21,14 @@ jobs:
           tags: user/app:latest
           secrets: |
             GIT_AUTH_TOKEN=${{ secrets.MYTOKEN }}
+        run: docker build -t smallies/multi-client ./client
+        run: docker build -t smallies/multi-nginx ./nginx
+        run: docker build -t smallies/multi-server ./server    
+        run: docker build -t smallies/multi-worker ./worker
+        run: docker push smallies/multi-client
+        run: docker push smallies/multi-nginx
+        run: docker push smallies/multi-server
+        run: docker push smallies/multi-worker
 
       # - run: docker build -t smallies/multi-client ./client
       # - run: docker build -t smallies/multi-nginx ./nginx
