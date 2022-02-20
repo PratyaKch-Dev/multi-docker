@@ -13,6 +13,7 @@ jobs:
       - run: docker build -t smallies/react-test -f ./client/Dockerfile.dev ./client
       - run: docker run -e CI=true smallies/react-test yarn test -- --coverage
 
+      - name: Build and push
       - uses: docker/build-push-action@v2
       - with:
           context: .
