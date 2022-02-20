@@ -19,7 +19,7 @@ jobs:
           context: .
           push: true
           tags: user/app:latest
-              secrets: |
+          secrets: |
             GIT_AUTH_TOKEN=${{ secrets.MYTOKEN }}
 
       # - run: docker build -t smallies/multi-client ./client
