@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+      - run: docker login -u smallies ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
       - run: docker build -t smallies/react-test -f ./client/Dockerfile.dev ./client
       - run: docker run -e CI=true smallies/react-test yarn test -- --coverage
 
@@ -19,7 +19,7 @@ jobs:
           context: ./nginx
           push: true
           file: ./nginx/Dockerfile
-          tags: user/app:latest
+          tags: smallies:latest
           secrets: |
             GIT_AUTH_TOKEN=${{ secrets.MYTOKEN }}
 
