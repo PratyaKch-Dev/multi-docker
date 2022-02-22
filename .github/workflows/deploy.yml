@@ -19,7 +19,7 @@ jobs:
           context: ./nginx
           push: true
           file: ./nginx/Dockerfile
-          tags: smallies/multi-client ./client
+          tags: smallies/dockerhub:myfirstimagepush
           secrets: |
             GIT_AUTH_TOKEN=${{ secrets.MYTOKEN }}
 
