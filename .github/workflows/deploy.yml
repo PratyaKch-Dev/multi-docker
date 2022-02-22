@@ -16,9 +16,9 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v2
         with:
-          context: ./nginx
+          context: ./client
           push: true
-          # file: ./client
+          file: ./client/Dockerfile
           tags: user/app:latest
           secrets: |
             GIT_AUTH_TOKEN=${{ secrets.MYTOKEN }}
