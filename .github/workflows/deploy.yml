@@ -19,7 +19,7 @@ jobs:
           context: ./nginx
           push: true
           file: ./nginx/Dockerfile
-          tags: user/app:latest
+          tags: smallies/multi-client ./client
           secrets: |
             GIT_AUTH_TOKEN=${{ secrets.MYTOKEN }}
 
