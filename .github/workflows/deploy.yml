@@ -8,57 +8,20 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      # - uses: actions/checkout@v2
-      # - run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
-      # - run: docker build -t smallies/react-test -f ./client/Dockerfile.dev ./client
-      # - run: docker run -e CI=true smallies/react-test yarn test -- --coverage
+      - uses: actions/checkout@v2
+      - run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+      - run: docker build -t smallies/react-test -f ./client/Dockerfile.dev ./client
+      - run: docker run -e CI=true smallies/react-test yarn test -- --coverage
 
-      - name: Checkout
-        uses: actions/checkout@v2
-      - name: Set up QEMU
-        uses: docker/setup-qemu-action@v1
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v1
-      - name: Login to DockerHub
-        uses: docker/login-action@v1
-        with:
-          username: ${{ secrets.DOCKER_USERNAME }}
-          password: ${{ secrets.DOCKER_PASSWORD }}
       - name: Build and push
         uses: docker/build-push-action@v2
         with:
           context: ./nginx
           push: true
           file: ./nginx/Dockerfile
-          tags: smallies:latest
+          tags: user/app:latest
           secrets: |
-            "github_token=${{ secrets.MYTOKEN }}"
-
-      # - name: Build and push
-      #   uses: docker/build-push-action@v2
-      #   with:
-      #     context: ./nginx
-      #     file: ./nginx/Dockerfile
-      #     push: true
-      #     tags: user/app:latest
-      #     secrets: |
-      #       GIT_AUTH_TOKEN=${{ secrets.MYTOKEN }}
-
-      # - name: Login to Docker Hub
-      #   uses: docker/login-action@v1
-      #   with:
-      #     username: ${{ secrets.DOCKER_USERNAME }}
-      #     password: ${{ secrets.DOCKER_PASSWORD }}
-
-      # - name: Build and push
-      #   uses: docker/build-push-action@v2
-      #   with:
-      #     context: ./nginx
-      #     push: true
-      #     file: ./nginx/Dockerfile
-      #     tags: smallies:latest
-      #     secrets: |
-      #       GIT_AUTH_TOKEN=${{ secrets.MYTOKEN }}
+            GIT_AUTH_TOKEN=${{ secrets.MYTOKEN }}
 
       # - run: docker build -t smallies/multi-client ./client
       # - run: docker build -t smallies/multi-nginx ./nginx
