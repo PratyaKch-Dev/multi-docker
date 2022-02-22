@@ -19,7 +19,7 @@ jobs:
           context: ./client
           push: true
           file: ./client/Dockerfile
-          tags: smallies/dockerhub:/multi-client
+          tags: smallies/dockerhub:multi-client
           secrets: |
             GIT_AUTH_TOKEN=${{ secrets.MYTOKEN }}
 
