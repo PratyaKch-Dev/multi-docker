@@ -13,15 +13,15 @@ jobs:
       - run: docker build -t smallies/react-test -f ./client/Dockerfile.dev ./client
       - run: docker run -e CI=true smallies/react-test yarn test -- --coverage
 
-      - name: Build and push client
-        uses: docker/build-push-action@v2
-        with:
-          context: ./client
-          push: true
-          file: ./client/Dockerfile
-          tags: smallies/dockerhub:multi-client
-          secrets: |
-            GIT_AUTH_TOKEN=${{ secrets.MYTOKEN }}
+      # - name: Build and push client
+      #   uses: docker/build-push-action@v2
+      #   with:
+      #     context: ./client
+      #     push: true
+      #     file: ./client/Dockerfile
+      #     tags: smallies/dockerhub:multi-client
+      #     secrets: |
+      #       GIT_AUTH_TOKEN=${{ secrets.MYTOKEN }}
 
       - name: Build and push nginx
         uses: docker/build-push-action@v2
