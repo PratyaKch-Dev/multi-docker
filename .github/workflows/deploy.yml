@@ -19,15 +19,15 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
-      - name: Build and push
-        uses: docker/build-push-action@v2
-        with:
-          context: ./nginx
-          push: true
-          file: ./nginx/Dockerfile
-          tags: smallies:latest
-          secrets: |
-            GIT_AUTH_TOKEN=${{ secrets.MYTOKEN }}
+      # - name: Build and push
+      #   uses: docker/build-push-action@v2
+      #   with:
+      #     context: ./nginx
+      #     push: true
+      #     file: ./nginx/Dockerfile
+      #     tags: smallies:latest
+      #     secrets: |
+      #       GIT_AUTH_TOKEN=${{ secrets.MYTOKEN }}
 
       # - run: docker build -t smallies/multi-client ./client
       # - run: docker build -t smallies/multi-nginx ./nginx
