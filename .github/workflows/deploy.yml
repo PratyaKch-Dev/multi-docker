@@ -19,7 +19,7 @@ jobs:
           context: ./client
           push: true
           file: ./client/Dockerfile
-          tags: smallies/dockerhub:multi-client
+          tags: smallies/dockerhubmulti:multi-client
           secrets: |
             GIT_AUTH_TOKEN=${{ secrets.MYTOKEN }}
 
@@ -29,7 +29,7 @@ jobs:
           context: ./nginx
           push: true
           file: ./nginx/Dockerfile
-          tags: smallies/dockerhub:multi-nginx
+          tags: smallies/dockerhubmulti:multi-nginx
           secrets: |
             GIT_AUTH_TOKEN=${{ secrets.MYTOKEN }}
 
@@ -39,7 +39,7 @@ jobs:
           context: ./server
           push: true
           file: ./server/Dockerfile
-          tags: smallies/dockerhub:multi-server
+          tags: smallies/dockerhubmulti:multi-server
           secrets: |
             GIT_AUTH_TOKEN=${{ secrets.MYTOKEN }}
 
@@ -49,7 +49,7 @@ jobs:
           context: ./worker
           push: true
           file: ./worker/Dockerfile
-          tags: smallies/dockerhub:multi-worker
+          tags: smallies/dockerhubmulti:multi-worker
           secrets: |
             GIT_AUTH_TOKEN=${{ secrets.MYTOKEN }}
 
